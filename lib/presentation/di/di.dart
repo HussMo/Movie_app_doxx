@@ -4,7 +4,7 @@ import '../../data/data_sources/local/prefrance.dart';
 import '../../data/data_sources/remote/repositories/filter_repo.dart';
 import '../../data/data_sources/remote/repositories/movie_repo.dart';
 import '../../domain/repositories/filter_repo_impl.dart';
-import '../../domain/repositories/movie_rep[o_impl.dart';
+import '../../domain/repositories/movie_repo_impl.dart';
 import '../../shared/core/network/dio_manager.dart';
 import '../ui/filter/filter_cubit.dart';
 import '../ui/home/home_cubit.dart';

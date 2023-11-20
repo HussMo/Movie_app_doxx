@@ -22,4 +22,13 @@ class MoviesQueryRequest {
     data['query'] = query ?? '';
     return data;
   }
+
+  static MoviesQueryRequest fromJson(Map<String, dynamic> parameters) {
+    return MoviesQueryRequest(
+      apiKey: parameters['api_key'],
+      language: parameters['language'],
+      page: parameters['page'],
+      query: parameters['query'],
+    );
+  }
 }

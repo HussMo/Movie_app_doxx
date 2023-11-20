@@ -22,4 +22,13 @@ class MoviesRequest {
     data['sort_by'] = sortBy ?? 'popularity.desc';
     return data;
   }
+
+  static MoviesRequest fromJson(Map<String, dynamic> parameters) {
+    return MoviesRequest(
+      apiKey: parameters['api_key'],
+      language: parameters['language'],
+      page: parameters['page'],
+      sortBy: parameters['sort_by'],
+    );
+  }
 }
