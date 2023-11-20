@@ -39,5 +39,4 @@ class AppValues {
 
   /// locales path
   static const String localesPath = 'assets/translations';
-
 }

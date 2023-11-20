@@ -1,4 +1,3 @@
-
 import 'package:cubit_movies/presentation/di/di.dart';
 import 'package:cubit_movies/presentation/router/approuter.dart';
 import 'package:cubit_movies/presentation/router/approutes.dart';
@@ -13,7 +12,6 @@ import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'data/data_sources/local/prefrance.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +40,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return OverlaySupport.global(
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

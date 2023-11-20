@@ -1,4 +1,3 @@
-
 import 'package:cubit_movies/presentation/ui/home/widgets/movie_item.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +21,7 @@ import '../../router/arguments.dart';
 import '../filter/filter_dialog.dart';
 import 'home_cubit.dart';
 import 'home_enum.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -62,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               } else if (state is HomeErrorState) {
                 return const AppErrorWidget();
-              } else if (state is HomeLoadedState || state is HomeMoviesLoadingState) {
+              } else if (state is HomeLoadedState ||
+                  state is HomeMoviesLoadingState) {
                 return GestureDetector(
                   onTap: unFocus,
                   child: Scaffold(
@@ -100,7 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         },
                                       ),
                                     ),
-                                    onChanged: (v) => _homeCubit.searchMovies(v),
+                                    onChanged: (v) =>
+                                        _homeCubit.searchMovies(v),
                                   ),
                                 ),
                               ),
@@ -125,18 +127,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: IconButtonWidget(
                                   tooltip: StringsKeys.filter.tr(),
                                   icon: Icons.filter_alt_outlined,
-                                  color: _homeCubit.type == HomeEnums.filter ? Theme.of(context).primaryColor : null,
+                                  color: _homeCubit.type == HomeEnums.filter
+                                      ? Theme.of(context).primaryColor
+                                      : null,
                                   buttonSize: isMobile() ? 50 : 57,
                                   onPressed: () async {
                                     if (state is HomeLoadedState) {
-                                      final FilterModel? res = MediaQuery.of(context).size.width >= 1200 ?
-                                      await showFilterAlertDialog(
-                                        context: _scaffoldKey.currentContext ?? context,
-                                        filter: state.filterModel,
-                                      ) : await showFilterBottomSheet(
-                                        context: _scaffoldKey.currentContext ?? context,
-                                        filter: state.filterModel,
-                                      );
+                                      final FilterModel? res =
+                                          MediaQuery.of(context).size.width >=
+                                                  1200
+                                              ? await showFilterAlertDialog(
+                                                  context: _scaffoldKey
+                                                          .currentContext ??
+                                                      context,
+                                                  filter: state.filterModel,
+                                                )
+                                              : await showFilterBottomSheet(
+                                                  context: _scaffoldKey
+                                                          .currentContext ??
+                                                      context,
+                                                  filter: state.filterModel,
+                                                );
                                       if (res != null) {
                                         _searchTC.clear();
                                         _homeCubit.applyFilter(
@@ -165,7 +176,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       child: RefreshIndicator(
-                        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                        backgroundColor:
+                            Theme.of(context).scaffoldBackgroundColor,
                         onRefresh: () async {
                           _searchTC.clear();
                           _homeCubit.resetSearchFilter();
@@ -204,35 +216,37 @@ class _HomeScreenState extends State<HomeScreen> {
     required HomeLoadedState state,
     required void Function() unFocus,
   }) {
-    return state.movies.isEmpty ? const AppErrorWidget(
-      title: StringsKeys.noMovies,
-      backgroundColor: AppColors.transparent,
-    ) : PaginationScrollView(
-      scrollController: state.moviesSC,
-      type: ScrollViewEnums.wrap,
-      paginationLoader: state.paginationLoader,
-      padding: const EdgeInsets.symmetric(
-        vertical: 26.0,
-        horizontal: 8.0,
-      ),
-      children: state.movies.map((MoviesResponse movie) {
-        return MovieItem(
-          movie: movie,
-          onTap: () {
-            unFocus();
-            context.push(
-              AppRoutes.movie,
-              extra: MovieArguments(
-                movieId: movie.id,
-                posterPath: movie.posterPath,
-                title: movie.title,
-                voteAverage: movie.voteAverage,
-              ),
-            );
-          },
-        );
-      }).toList(),
-    );
+    return state.movies.isEmpty
+        ? const AppErrorWidget(
+            title: StringsKeys.noMovies,
+            backgroundColor: AppColors.transparent,
+          )
+        : PaginationScrollView(
+            scrollController: state.moviesSC,
+            type: ScrollViewEnums.wrap,
+            paginationLoader: state.paginationLoader,
+            padding: const EdgeInsets.symmetric(
+              vertical: 26.0,
+              horizontal: 8.0,
+            ),
+            children: state.movies.map((MoviesResponse movie) {
+              return MovieItem(
+                movie: movie,
+                onTap: () {
+                  unFocus();
+                  context.push(
+                    AppRoutes.movie,
+                    extra: MovieArguments(
+                      movieId: movie.id,
+                      posterPath: movie.posterPath,
+                      title: movie.title,
+                      voteAverage: movie.voteAverage,
+                    ),
+                  );
+                },
+              );
+            }).toList(),
+          );
   }
 
   void unFocus() => _searchFN.unfocus();

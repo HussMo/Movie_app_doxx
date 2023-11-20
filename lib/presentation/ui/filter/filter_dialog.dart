@@ -1,4 +1,3 @@
-
 import 'package:cubit_movies/presentation/ui/filter/widgets/filter_title_item.dart';
 import 'package:cubit_movies/presentation/ui/filter/widgets/genre_item.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -108,10 +107,11 @@ class FilterScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).dialogBackgroundColor,
               actions: [
                 Padding(
-                  padding: MediaQuery.of(context).size.width >= 540 ?
-                  const EdgeInsets.only(
-                    right: 8,
-                  ) : EdgeInsets.zero,
+                  padding: MediaQuery.of(context).size.width >= 540
+                      ? const EdgeInsets.only(
+                          right: 8,
+                        )
+                      : EdgeInsets.zero,
                   child: IconButton(
                     tooltip: StringsKeys.close.tr(),
                     icon: const Icon(Icons.clear),
@@ -124,11 +124,11 @@ class FilterScreen extends StatelessWidget {
               width: double.infinity,
               child: Builder(
                 builder: (BuildContext context) {
-                  if (state is FilterLoading ) {
+                  if (state is FilterLoading) {
                     return const AppProgress();
                   } else if (state is FilterError) {
                     return const AppErrorWidget();
-                  } else if (state is FilterLoaded ) {
+                  } else if (state is FilterLoaded) {
                     _yearTC.text = state.year;
                     return SingleChildScrollView(
                       child: Padding(
@@ -170,7 +170,8 @@ class FilterScreen extends StatelessWidget {
                 },
               ),
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
             floatingActionButton: Offstage(
               offstage: _filterCubit.selectedGenres.isEmpty,
               child: AppButton(

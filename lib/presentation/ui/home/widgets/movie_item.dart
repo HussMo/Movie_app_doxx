@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../domain/response/movies_response.dart';
@@ -39,7 +38,9 @@ class MovieItem extends StatelessWidget {
                     child: AspectRatio(
                       aspectRatio: 27 / 40,
                       child: Hero(
-                        tag: movie.id.toString() + movie.posterPath.toString() + AppValues.heroPoster,
+                        tag: movie.id.toString() +
+                            movie.posterPath.toString() +
+                            AppValues.heroPoster,
                         child: AppNetworkImage(
                           url: AppValues.imageUrl + (movie.posterPath ?? ''),
                         ),

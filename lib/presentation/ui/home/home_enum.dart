@@ -1,3 +1,1 @@
-enum HomeEnums {
-  main,search,filter
-}
+enum HomeEnums { main, search, filter }

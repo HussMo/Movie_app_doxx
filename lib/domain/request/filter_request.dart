@@ -1,7 +1,5 @@
-
 import '../../shared/constant/app_value.dart';
 import '../../shared/utils/utils.dart';
-
 
 class FilterRequest {
   String? apiKey;
@@ -21,7 +19,7 @@ class FilterRequest {
   });
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic> {};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['api_key'] = apiKey ?? AppValues.apiKey;
     data['language'] = language ?? getLangCode();
     data['with_genres'] = withGenres ?? '';

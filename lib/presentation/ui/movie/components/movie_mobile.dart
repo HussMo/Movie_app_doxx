@@ -1,4 +1,3 @@
-
 import 'package:decorated_icon/decorated_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +13,6 @@ import '../../../router/arguments.dart';
 import '../movie_cubit.dart';
 import '../widgets/movie_overview.dart';
 import '../widgets/movie_title.dart';
-
 
 class MovieMobile extends StatelessWidget {
   final MovieArguments arguments;
@@ -38,8 +36,8 @@ class MovieMobile extends StatelessWidget {
               pinned: false,
               shadowColor: AppColors.transparent,
               iconTheme: Theme.of(context).iconTheme.copyWith(
-                color: AppColors.white,
-              ),
+                    color: AppColors.white,
+                  ),
               leading: IconButton(
                 onPressed: context.pop,
                 icon: DecoratedIcon(
@@ -54,7 +52,9 @@ class MovieMobile extends StatelessWidget {
               ),
               flexibleSpace: FlexibleSpaceBar(
                 background: Hero(
-                  tag: arguments.movieId.toString() + arguments.posterPath.toString() + AppValues.heroPoster,
+                  tag: arguments.movieId.toString() +
+                      arguments.posterPath.toString() +
+                      AppValues.heroPoster,
                   child: AppNetworkImage(
                     url: AppValues.imageUrl + (arguments.posterPath ?? ''),
                   ),

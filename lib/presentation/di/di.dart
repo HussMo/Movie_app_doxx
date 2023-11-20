@@ -26,7 +26,8 @@ void setupBlocs() {
 }
 
 void _setupRepositories() {
-  getIt.registerSingleton<MoviesRepository>(MoviesRepositoryImpl(getIt.get<DioManager>()));
+  getIt.registerSingleton<MoviesRepository>(
+      MoviesRepositoryImpl(getIt.get<DioManager>()));
 
   getIt.registerSingleton<FilterRepository>(FilterRepositoryImpl(getIt.get()));
 }

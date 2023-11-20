@@ -7,7 +7,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../../constant/app_value.dart';
 import '../../utils/utils.dart';
 
-
 /// Class that makes API call easier
 class DioManager {
   Dio? _dioInstance;
@@ -21,7 +20,7 @@ class DioManager {
     final Dio dio = Dio(
       BaseOptions(
         baseUrl: AppValues.baseUrl,
-        headers: <String, String> {},
+        headers: <String, String>{},
         sendTimeout: 30000,
         connectTimeout: 20000,
         receiveTimeout: 60000,
@@ -48,20 +47,23 @@ class DioManager {
   /// DIO GET
   /// take [path], concrete route
   Future<Response> get(
-      String path, {
-        Map<String, dynamic>? headers,
-        Map<String, dynamic>? parameters,
-      }) async {
-    return await dio!.get(
+    String path, {
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? parameters,
+  }) async {
+    return await dio!
+        .get(
       path,
       queryParameters: parameters,
       options: Options(headers: headers),
-    ).then((response) {
+    )
+        .then((response) {
       return response;
     }).catchError((dynamic error) async {
       errorToast(
         code: error.response?.data?['status_code']?.toString() ?? '',
-        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+        message:
+            '${error.response?.data?['status_message']?.toString() ?? ''} error',
       );
     });
   }
@@ -69,20 +71,23 @@ class DioManager {
   /// DIO POST
   /// take [path], concrete route
   Future<Response> post(
-      String path, {
-        Map<String, dynamic>? headers,
-        dynamic body,
-      }) async {
-    return await dio!.post(
+    String path, {
+    Map<String, dynamic>? headers,
+    dynamic body,
+  }) async {
+    return await dio!
+        .post(
       path,
       data: body,
       options: Options(headers: headers),
-    ).then((response) {
+    )
+        .then((response) {
       return response;
     }).catchError((dynamic error) {
       errorToast(
         code: error.response?.data?['status_code']?.toString() ?? '',
-        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+        message:
+            '${error.response?.data?['status_message']?.toString() ?? ''} error',
       );
     });
   }
@@ -90,20 +95,23 @@ class DioManager {
   /// DIO PUT
   /// take [path], concrete route
   Future<Response> put(
-      String path, {
-        Map<String, dynamic>? headers,
-        dynamic body,
-      }) async {
-    return await dio!.put(
+    String path, {
+    Map<String, dynamic>? headers,
+    dynamic body,
+  }) async {
+    return await dio!
+        .put(
       path,
       data: body,
       options: Options(headers: headers),
-    ).then((response) {
+    )
+        .then((response) {
       return response;
     }).catchError((dynamic error) {
       errorToast(
         code: error.response?.data?['status_code']?.toString() ?? '',
-        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+        message:
+            '${error.response?.data?['status_message']?.toString() ?? ''} error',
       );
     });
   }
@@ -111,20 +119,23 @@ class DioManager {
   /// DIO DELETE
   /// take [path], concrete route
   Future<Response> delete(
-      String path, {
-        Map<String, dynamic>? headers,
-        dynamic body,
-      }) async {
-    return await dio!.delete(
+    String path, {
+    Map<String, dynamic>? headers,
+    dynamic body,
+  }) async {
+    return await dio!
+        .delete(
       path,
       data: body,
       options: Options(headers: headers),
-    ).then((response) {
+    )
+        .then((response) {
       return response;
     }).catchError((dynamic error) {
       errorToast(
         code: error.response?.data?['status_code']?.toString() ?? '',
-        message: '${error.response?.data?['status_message']?.toString() ?? ''} error',
+        message:
+            '${error.response?.data?['status_message']?.toString() ?? ''} error',
       );
     });
   }

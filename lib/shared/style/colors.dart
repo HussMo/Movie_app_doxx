@@ -9,7 +9,8 @@ class AppColors {
   static const Color red = Colors.redAccent;
   static const Color yellow = Colors.orange;
   static const Color transparent = Colors.transparent;
-  static const MaterialColor pinkAccent = MaterialColor(0xFFFF0A6C, pinkMaterial);
+  static const MaterialColor pinkAccent =
+      MaterialColor(0xFFFF0A6C, pinkMaterial);
 
   static const Color darkGray = Color(0xFF0C0C0C);
   static const Color grey = Color(0xFF606060);

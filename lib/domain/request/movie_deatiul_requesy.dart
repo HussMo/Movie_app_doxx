@@ -1,7 +1,6 @@
 import '../../shared/constant/app_value.dart';
 import '../../shared/utils/utils.dart';
 
-
 class MovieRequest {
   String? apiKey;
   String? language;
@@ -14,7 +13,7 @@ class MovieRequest {
   });
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic> {};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['api_key'] = apiKey ?? AppValues.apiKey;
     data['language'] = language ?? getLangCode();
     return data;

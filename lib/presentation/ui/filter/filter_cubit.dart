@@ -20,20 +20,21 @@ class FilterCubit extends Cubit<FilterState> {
     setFilter(filterModel);
     await getGenre();
     emit(
-      FilterLoaded (
-        year: year ,
+      FilterLoaded(
+        year: year,
         genres: genres,
         selectedGenres: selectedGenres,
       ),
     );
   }
 
-  void setFilter (final FilterModel? filterModel){
-    if (filterModel!=null){
-      year=filterModel.year;
-      selectedGenres=filterModel.selectedGenres;
+  void setFilter(final FilterModel? filterModel) {
+    if (filterModel != null) {
+      year = filterModel.year;
+      selectedGenres = filterModel.selectedGenres;
     }
   }
+
   bool applyFilter(String year) {
     if (selectedGenres.isNotEmpty) {
       filter = FilterModel(year: year, selectedGenres: selectedGenres);

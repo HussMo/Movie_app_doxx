@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../style/colors.dart';
@@ -26,29 +25,33 @@ class AppNetworkImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ColoredBox(
       color: AppColors.black.withOpacity(0.1),
-      child: (url?? '').isEmpty ? AppMediaError(
-        isPerson: isPerson,
-        personSize: personSize,
-      ) : Image.network(
-        url!,
-        width: width,
-        height: height,
-        fit: BoxFit.cover,
-        filterQuality: FilterQuality.none,
-        loadingBuilder: (_, Widget child, ImageChunkEvent? loadingProgress) {
-          if (loadingProgress == null) {
-            return child;
-          } else {
-            return isProgress ? const AppProgress() : const Offstage();
-          }
-        },
-        errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-          return AppMediaError(
-            isPerson: isPerson,
-            personSize: personSize,
-          );
-        },
-      ),
+      child: (url ?? '').isEmpty
+          ? AppMediaError(
+              isPerson: isPerson,
+              personSize: personSize,
+            )
+          : Image.network(
+              url!,
+              width: width,
+              height: height,
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.none,
+              loadingBuilder:
+                  (_, Widget child, ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) {
+                  return child;
+                } else {
+                  return isProgress ? const AppProgress() : const Offstage();
+                }
+              },
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                return AppMediaError(
+                  isPerson: isPerson,
+                  personSize: personSize,
+                );
+              },
+            ),
     );
   }
 }
@@ -66,12 +69,14 @@ class AppMediaError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: isPerson ? Icon(
-        Icons.person,
-        size: personSize,
-      ) : const Icon(
-        Icons.error_outline,
-      ),
+      child: isPerson
+          ? Icon(
+              Icons.person,
+              size: personSize,
+            )
+          : const Icon(
+              Icons.error_outline,
+            ),
     );
   }
 }

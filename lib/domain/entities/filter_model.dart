@@ -1,4 +1,5 @@
 import '../response/genre_response.dart';
+
 class FilterModel {
   String year;
   List<GenreResponse> selectedGenres;

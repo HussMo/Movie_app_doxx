@@ -1,5 +1,3 @@
-
-
 import '../../shared/utils/utils.dart';
 
 class MoviesResponse {

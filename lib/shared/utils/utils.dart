@@ -16,11 +16,13 @@ void errorToast({
 }
 
 bool isApple() {
-  return defaultTargetPlatform == TargetPlatform.macOS || defaultTargetPlatform == TargetPlatform.iOS;
+  return defaultTargetPlatform == TargetPlatform.macOS ||
+      defaultTargetPlatform == TargetPlatform.iOS;
 }
 
 bool isMobile() {
-  return defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
+  return defaultTargetPlatform == TargetPlatform.android ||
+      defaultTargetPlatform == TargetPlatform.iOS;
 }
 
 double doubleParser(dynamic data) {
@@ -33,9 +35,19 @@ double doubleParser(dynamic data) {
 }
 
 String getClearName(String? firstName, String? lastName, {bool comma = false}) {
-  return (firstName ?? '') + (firstName == null ? '' : firstName.isEmpty ? ''
-      : comma ? lastName == null ? '' : lastName.isEmpty ? '' : ', ' : ' ')
-      + (lastName ?? '');
+  return (firstName ?? '') +
+      (firstName == null
+          ? ''
+          : firstName.isEmpty
+              ? ''
+              : comma
+                  ? lastName == null
+                      ? ''
+                      : lastName.isEmpty
+                          ? ''
+                          : ', '
+                  : ' ') +
+      (lastName ?? '');
 }
 
 String getLangCode() {

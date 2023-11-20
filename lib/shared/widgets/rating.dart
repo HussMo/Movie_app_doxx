@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -15,13 +14,15 @@ Widget buildRating({
         itemSize: 21,
         rating: (votes / 2) - 0.5,
         itemBuilder: (context, index) {
-          return (index + 1) <= ((votes / 2)) ? const Icon(
-            Icons.star,
-            color: AppColors.yellow,
-          ) : const Icon(
-            Icons.star_border,
-            color: AppColors.yellow,
-          );
+          return (index + 1) <= ((votes / 2))
+              ? const Icon(
+                  Icons.star,
+                  color: AppColors.yellow,
+                )
+              : const Icon(
+                  Icons.star_border,
+                  color: AppColors.yellow,
+                );
         },
       ),
       Padding(

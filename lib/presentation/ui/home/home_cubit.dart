@@ -14,6 +14,7 @@ import '../../../shared/core/base/pageintation_scroll_controller.dart';
 import 'home_enum.dart';
 
 part 'home_state.dart';
+
 class HomeCubit extends Cubit<HomeState> {
   final MoviesRepository moviesRepository;
 
@@ -30,7 +31,6 @@ class HomeCubit extends Cubit<HomeState> {
   final List<MoviesResponse> movies = [];
   FilterModel? filterModel;
   FilterRequest? filterRequest;
-
 
   Future<List<MoviesResponse>> getMovies(MoviesRequest data) async {
     return await moviesRepository.getMovies(data);
@@ -50,7 +50,6 @@ class HomeCubit extends Cubit<HomeState> {
           paginationLoader: true,
         ),
       );
-
     }
     final List<MoviesResponse> loadedMovies = await getMovies(
       MoviesRequest(page: page),
@@ -67,7 +66,6 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-
   void searchMoviesByQuery(String query) async {
     if (page == 1) {
       emit(HomeMoviesLoadingState());
@@ -80,9 +78,9 @@ class HomeCubit extends Cubit<HomeState> {
           paginationLoader: true,
         ),
       );
-
     }
-    final List<MoviesResponse> loadedMovies = await moviesRepository.getMoviesByQuery(
+    final List<MoviesResponse> loadedMovies =
+        await moviesRepository.getMoviesByQuery(
       MoviesQueryRequest(
         page: page,
         query: query,
@@ -100,8 +98,6 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-
-
   void searchMovies(String v) async {
     filterModel = null;
     if (v.isEmpty) {
@@ -115,7 +111,7 @@ class HomeCubit extends Cubit<HomeState> {
         }
         _searchDebounce = Timer(
           const Duration(seconds: 1),
-              () async {
+          () async {
             if (query.isNotEmpty) {
               clearMovies();
               searchMoviesByQuery(query);
@@ -127,9 +123,9 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void applyFilter(
-      final FilterModel? res, {
-        final bool apply = false,
-      }) async {
+    final FilterModel? res, {
+    final bool apply = false,
+  }) async {
     if (apply) {
       page = 1;
       filterModel = res;
@@ -150,7 +146,8 @@ class HomeCubit extends Cubit<HomeState> {
         ),
       );
     }
-    final List<MoviesResponse> loadedMovies = await moviesRepository.getMoviesByFilter(
+    final List<MoviesResponse> loadedMovies =
+        await moviesRepository.getMoviesByFilter(
       filterRequest!,
     );
     stopPagination = loadedMovies.isEmpty;
@@ -204,7 +201,6 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-
   Future<void> getStartMovies() async {
     final List<MoviesResponse> loadedMovies = await getMovies(
       MoviesRequest(page: page),
@@ -212,7 +208,6 @@ class HomeCubit extends Cubit<HomeState> {
     stopPagination = loadedMovies.isEmpty;
     movies.addAll(loadedMovies);
   }
-
 
   void resetSearchFilter() {
     query = '';
@@ -230,8 +225,6 @@ class HomeCubit extends Cubit<HomeState> {
     );
   }
 
-
-
   void setFilter() {
     int? year = int.tryParse(filterModel!.year);
     if (year != null) {
@@ -245,7 +238,8 @@ class HomeCubit extends Cubit<HomeState> {
         genresStrings.add(e.id.toString());
       }
     }
-    final String withGenres = genresStrings.toString().replaceAll('[', '').replaceAll(']', '');
+    final String withGenres =
+        genresStrings.toString().replaceAll('[', '').replaceAll(']', '');
     filterRequest = FilterRequest(
       year: year,
       withGenres: withGenres,
@@ -256,7 +250,4 @@ class HomeCubit extends Cubit<HomeState> {
     page = 1;
     movies.clear();
   }
-
-
-
 }

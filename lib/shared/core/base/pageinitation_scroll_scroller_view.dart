@@ -101,4 +101,3 @@ class PaginationScrollView extends StatelessWidget {
     );
   }
 }
-

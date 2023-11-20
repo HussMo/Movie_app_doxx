@@ -45,7 +45,9 @@ class MovieDesktop extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Hero(
-                    tag: arguments.movieId.toString() + arguments.posterPath.toString() + AppValues.heroPoster,
+                    tag: arguments.movieId.toString() +
+                        arguments.posterPath.toString() +
+                        AppValues.heroPoster,
                     child: Padding(
                       padding: const EdgeInsets.only(
                         top: 38,
@@ -56,7 +58,8 @@ class MovieDesktop extends StatelessWidget {
                           maxWidth: 480,
                         ),
                         child: AppNetworkImage(
-                          url: AppValues.imageUrl + (arguments.posterPath ?? ''),
+                          url:
+                              AppValues.imageUrl + (arguments.posterPath ?? ''),
                         ),
                       ),
                     ),

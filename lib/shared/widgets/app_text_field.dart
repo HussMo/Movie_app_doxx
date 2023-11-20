@@ -48,9 +48,10 @@ class AppTextField extends StatelessWidget {
         autocorrect: false,
         obscureText: obscureText,
         autofocus: false,
-        inputFormatters: inputFormatters ?? [
-          LengthLimitingTextInputFormatter(100),
-        ],
+        inputFormatters: inputFormatters ??
+            [
+              LengthLimitingTextInputFormatter(100),
+            ],
         decoration: _textFieldStyle(
           context: context,
           hint: hint,
@@ -81,20 +82,21 @@ class AppTextField extends StatelessWidget {
       hintMaxLines: 1,
       fillColor: backgroundColor ?? Theme.of(context).backgroundColor,
       contentPadding: contentPadding,
-      constraints: maxLines == 1 ? const BoxConstraints(
-        minHeight: 48,
-        maxHeight: 48,
-      ) : null,
-      prefixIcon: prefix == null ? null : Padding(
-        padding: const EdgeInsets.only(
-          left: 12,
-          right: 2,
-        ),
-        child: Text(
-            prefix,
-            style: Theme.of(context).textTheme.subtitle1
-        ),
-      ),
+      constraints: maxLines == 1
+          ? const BoxConstraints(
+              minHeight: 48,
+              maxHeight: 48,
+            )
+          : null,
+      prefixIcon: prefix == null
+          ? null
+          : Padding(
+              padding: const EdgeInsets.only(
+                left: 12,
+                right: 2,
+              ),
+              child: Text(prefix, style: Theme.of(context).textTheme.subtitle1),
+            ),
       prefixIconConstraints: const BoxConstraints(
         maxHeight: 225,
         minHeight: 22,

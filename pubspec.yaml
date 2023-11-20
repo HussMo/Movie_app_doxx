@@ -26,6 +26,9 @@ dependencies:
   # localization
   easy_localization: ^3.0.1
 
+  #testing
+  mockito: ^5.4.3
+
   # network
   dio: ^4.0.4
   pretty_dio_logger: ^1.1.1

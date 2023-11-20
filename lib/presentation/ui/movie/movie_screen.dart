@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 
 import '../../router/arguments.dart';
 import 'components/movie_desktop.dart';
 import 'components/movie_mobile.dart';
-
 
 class MovieScreen extends StatelessWidget {
   final MovieArguments arguments;

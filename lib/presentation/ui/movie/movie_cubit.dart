@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,14 +12,14 @@ class MovieCubit extends Cubit<MovieState> {
 
   MovieCubit(this.moviesRepository) : super(MovieInitialState());
 
-  Future<void > getMovie (final int? movieId)async{
-    if (movieId==null){
+  Future<void> getMovie(final int? movieId) async {
+    if (movieId == null) {
       emit(MovieErrorState());
-    }
-    else {
+    } else {
       emit(MovieLoadingState());
-      final MovieResponse? loadedMovie=await moviesRepository.getMovie(MovieRequest(movieId: movieId));
-      if (loadedMovie==null){
+      final MovieResponse? loadedMovie =
+          await moviesRepository.getMovie(MovieRequest(movieId: movieId));
+      if (loadedMovie == null) {
         emit(MovieErrorState());
       }
       emit(MovieLoadedState(movieResponse: loadedMovie));

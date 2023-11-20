@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../style/colors.dart';
@@ -29,7 +28,8 @@ class AppButton extends StatelessWidget {
           child: ElevatedButton(
             style: ButtonStyle(
               elevation: MaterialStateProperty.all<double>(0.4),
-              backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).primaryColor),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).primaryColor),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),

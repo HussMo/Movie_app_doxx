@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart' show CupertinoActivityIndicator;
 import 'package:flutter/material.dart';
 
@@ -18,16 +17,18 @@ class ProgressAreaWidget extends StatelessWidget {
   }
 }
 
-
 class AppProgress extends StatelessWidget {
   const AppProgress({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: isApple() ? const CupertinoActivityIndicator() : CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
-      ),
+      child: isApple()
+          ? const CupertinoActivityIndicator()
+          : CircularProgressIndicator(
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+            ),
     );
   }
 }

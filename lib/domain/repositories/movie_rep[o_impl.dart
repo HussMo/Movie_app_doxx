@@ -8,7 +8,6 @@ import '../request/movies_request.dart';
 import '../response/movie_response.dart';
 import '../response/movies_response.dart';
 
-
 class MoviesRepositoryImpl extends MoviesRepository {
   final DioManager _dio;
   MoviesRepositoryImpl(this._dio);
@@ -17,10 +16,12 @@ class MoviesRepositoryImpl extends MoviesRepository {
   Future<List<MoviesResponse>> getMovies(final MoviesRequest parameters) async {
     List<MoviesResponse> res = <MoviesResponse>[];
     try {
-      return await _dio.get(
+      return await _dio
+          .get(
         'discover/movie',
         parameters: parameters.toJson(),
-      ).then((response) {
+      )
+          .then((response) {
         res = (response.data['results'] as List).map((e) {
           return MoviesResponse.fromJson(e);
         }).toList();
@@ -33,13 +34,16 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<MoviesResponse>> getMoviesByQuery(final MoviesQueryRequest parameters) async {
+  Future<List<MoviesResponse>> getMoviesByQuery(
+      final MoviesQueryRequest parameters) async {
     List<MoviesResponse> res = <MoviesResponse>[];
     try {
-      return await _dio.get(
+      return await _dio
+          .get(
         'search/movie',
         parameters: parameters.toJson(),
-      ).then((response) {
+      )
+          .then((response) {
         res = (response.data['results'] as List).map((e) {
           return MoviesResponse.fromJson(e);
         }).toList();
@@ -52,13 +56,16 @@ class MoviesRepositoryImpl extends MoviesRepository {
   }
 
   @override
-  Future<List<MoviesResponse>> getMoviesByFilter(final FilterRequest filter) async {
+  Future<List<MoviesResponse>> getMoviesByFilter(
+      final FilterRequest filter) async {
     List<MoviesResponse> res = <MoviesResponse>[];
     try {
-      return await _dio.get(
+      return await _dio
+          .get(
         'discover/movie',
         parameters: filter.toJson(),
-      ).then((response) {
+      )
+          .then((response) {
         res = (response.data['results'] as List).map((e) {
           return MoviesResponse.fromJson(e);
         }).toList();
@@ -73,10 +80,12 @@ class MoviesRepositoryImpl extends MoviesRepository {
   @override
   Future<MovieResponse?> getMovie(final MovieRequest parameters) async {
     try {
-      return await _dio.get(
+      return await _dio
+          .get(
         'movie/${parameters.movieId}',
         parameters: parameters.toJson(),
-      ).then((response) {
+      )
+          .then((response) {
         return MovieResponse.fromJson(response.data);
       });
     } catch (e) {
